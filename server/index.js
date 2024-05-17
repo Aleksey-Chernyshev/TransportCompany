@@ -1,0 +1,27 @@
+const express = require('express')
+const typeProductRouter = require('./routes/type_product.routes')
+const ProductRouter = require('./routes/product.routes')
+const EdIzmRouter = require('./routes/edIzm.routes')
+const CustomerRouter = require('./routes/customer.routes')
+const DriverRouter = require('./routes/driver.routes')
+const EmployeeRouter = require('./routes/employee.routes')
+const TTNRouter = require('./routes/ttn.routes')
+const SpecTTNRouter = require('./routes/spec_ttn.routes')
+
+const PORT = process.env.PORT || 3001
+const app = express()
+const cors = require('cors')
+app.use(express.json())
+app.use(cors())
+app.use('/api', typeProductRouter)
+app.use('/api', ProductRouter)
+app.use('/api', EdIzmRouter)
+app.use('/api', CustomerRouter)
+app.use('/api', DriverRouter)
+app.use('/api', EmployeeRouter)
+app.use('/api', TTNRouter)
+app.use('/api', SpecTTNRouter)
+
+app.listen(PORT, () => {
+  console.log(`App running on port ${PORT}.`)
+})
