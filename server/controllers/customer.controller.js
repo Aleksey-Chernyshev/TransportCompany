@@ -3,7 +3,8 @@ const db = require('../db')
 class CustomerController{
     async createCustomer(req, res){
         const {zakazchik, adress, phone, index, inn, rasch} = req.body
-        const newCustomer = await db.query(`INSERT INTO customer (zakazchik, adress, phone, index, inn, rasch) values ($1, $2, $3, $4, $5, $6) RETURNING *`, [zakazchik, adress, phone, index, inn, rasch])
+        const newCustomer = await db.query(`INSERT INTO customer (zakazchik, adress, phone, index, inn, rasch) 
+        values ($1, $2, $3, $4, $5, $6) RETURNING *`, [zakazchik, adress, phone, index, inn, rasch])
         res.json(newCustomer.rows[0])
     }
     async getCustomers(req, res){
